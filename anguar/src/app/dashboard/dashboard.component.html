@@ -1,0 +1,82 @@
+
+<div class="container" *ngIf="pageMode==0">
+    <div style="display: flex;flex-wrap: wrap;">
+      <div style="width: 50%;">
+       <h3>User Details</h3>
+      </div>
+      <div style="width: 50%;justify-content: right;align-items: center;display: flex;"> 
+         <i class="fa fa-plus pointer" aria-hidden="true" (click)="newForm()"></i>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Email Id</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of UserDetail">
+          <td >{{user.name}}</td>
+          <td >{{user.gender}}</td>
+          <td >{{user.email}}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.Address}}</td>
+          <td>
+            <i class="fa fa-pencil pointer" aria-hidden="true" (click)="edit(user)" style="margin-right: 1em;"></i>
+            <i class="fa fa-trash pointer" aria-hidden="true" (click)="deleteService(user._id)"></i> 
+          </td>
+        </tr>
+        <tr *ngIf="!UserDetail.length" style="text-align: center;">
+          <td colspan="6"> No Data Found! </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  
+  <div class="add-user" *ngIf="pageMode==1 || pageMode==2">
+    <h3 style="text-align: center;"> Add User </h3>
+    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && add()">
+        <div>
+        <input type="text" class="fadeIn" name="name" placeholder="User Name" [(ngModel)]="userForm.name" maxlength="50" required>
+        </div>
+          <small class="text-danger" *ngIf="f.submitted && f.form.controls.name?.errors?.required 
+          || f.form.controls.name?.errors?.required && f.form.controls.name.touched">You must enter user name.</small>
+        <div>
+          <input type="text" class="fadeIn" name="gender" placeholder="Gender"  [(ngModel)]="userForm.gender" min="5" max="15" required>
+        </div>
+          <small class="text-danger" *ngIf="f.submitted && f.form.controls.gender?.errors?.required 
+          || f.form.controls.gender?.errors?.required && f.form.controls.gender.touched">You must enter gender.</small>
+        <div>    
+            <input type="email" class="fadeIn" name="email" placeholder="Email Id" [(ngModel)]="userForm.email" maxlength="50" required>
+        </div>
+          <small class="text-danger" *ngIf="f.submitted && f.form.controls.email?.errors?.required 
+          || f.form.controls.email?.errors?.required && f.form.controls.email.touched">You must enter Email.</small>
+        <div>   
+            <input type="text" class="fadeIn" name="phone" placeholder="Phone"  [(ngModel)]="userForm.phone" min="10" max="10" required>
+        </div>
+            <small class="text-danger" *ngIf="f.submitted && f.form.controls.phone?.errors?.required 
+          || f.form.controls.phone?.errors?.required && f.form.controls.phone.touched">You must enter phone number.</small>
+        <div>
+         <input type="text" class="fadeIn" name="Address" placeholder="Address"  [(ngModel)]="userForm.Address" min="10" max="10" required>
+        </div>
+          <small class="text-danger" *ngIf="f.submitted && f.form.controls.Address?.errors?.required 
+          || f.form.controls.Address?.errors?.required && f.form.controls.Address.touched">You must enter Address.</small>
+        <div>
+            
+            <button type="button" class="fadeIn back" (click)="pageMode=0">
+                Back
+            </button>
+            <button type="submit" class="fadeIn save">
+                {{pageMode==1?'Add':'Update'}}
+            </button>
+        </div>
+    </form>
+  </div>
+
+  

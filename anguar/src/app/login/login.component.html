@@ -1,0 +1,24 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="underlineHover" [class.active]="screen==1" [class.inactive]="screen!=1" (click)="screen=1"> Sign In </h2>
+      <h2 class="underlineHover" [class.active]="screen==2" [class.inactive]="screen!=2" (click)="screen=2">Sign Up </h2>
+  
+      <!-- Login Form -->
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && login(f)">
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="User Name" [(ngModel)]="loginForm.name" maxlength="50" required>
+        <div>
+          <small class="text-danger" *ngIf="f.submitted && f.form.controls.login?.errors?.required || f.form.controls.login?.errors?.required && f.form.controls.login.touched">You must enter user name.</small>
+        </div>
+        <input type="text" id="password" class="fadeIn third" name="password" placeholder="password"  [(ngModel)]="loginForm.password" min="5" max="15" required>
+        <div> 
+          <small class="text-danger" *ngIf="f.submitted && f.form.controls.password?.errors?.required || f.form.controls.password?.errors?.required && f.form.controls.password.touched">You must enter password.</small>
+        </div>
+          <!-- <input type="submit" class="fadeIn fourth" value="Log In"> -->
+        <button type="submit" class="fadeIn fourth">
+            {{screen==1?'Log In':'Sign Up'}}
+        </button>
+      </form>
+  
+    </div>
+  </div>

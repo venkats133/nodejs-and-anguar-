@@ -1,0 +1,32 @@
+/* Add application styles & imports to this file! */
+@import '~ngx-toastr/toastr.css';
+
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
+/* BASIC */
+
+html {
+  // background-color: #56baed;
+  background-image: linear-gradient(135deg, tomato, rebeccapurple);
+  
+}
+
+body {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+
+app-dashboard {
+  align-items: center;
+  background-image: linear-gradient(135deg, tomato, rebeccapurple);
+  display: flex;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  height: 100vh;
+  justify-content: center;
+}
+
+.pointer {
+  cursor: pointer;
+}
